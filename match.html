@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+	<head>
+		<title>Match</title>
+		<meta charset="UTF-8" />
+
+		<script type="text/javascript">
+
+			function match(parm) {
+				var 
+					i, b, p1, p2, result, brackets,
+					bracket = {
+					 	b1 : ["(", "[", "{"], 
+						b2 : [")", "]", "}"]
+					};
+
+			    for (i = 0; i < parm.length; i++) {
+		    		for (b = 0; b < bracket.b1.length; b++) {
+		    			if(parm[i] == bracket.b1[b]) {
+				    		p1 = parm.indexOf(bracket.b1[b]);
+				    		p2 = parm.indexOf(bracket.b2[b]);
+
+
+		    				result = parm.slice(p1, p2 + 1);
+		    				brackets = bracket.b1[b] + bracket.b2[b];
+
+		    				if(result.length < 3){
+		    					console.log(111);
+		    					//console.log( result + ' == ' + brackets);
+		    					//console.log(result);
+		    					return { success:  true };
+		    				} else {
+		    					console.log('else');
+		    					result = parm.slice(p1 + 1, p2);
+		    					var myRegex = result.search(/.*\[|\]/);
+		    					console.log('ovo mi treba: ' + result); 
+		    					console.log('ovo mi treba: ' + myRegex); 
+		    					//console.log('innerP1: ' + result.indexOf(bracket.b1[b]));
+		    					//console.log(result.indexOf(bracket.b1[b]));
+
+		    					innerP1 = result.search(/[{()}]/g);
+		    					innerP2 = result.indexOf(bracket.b2[b]);
+
+		    					console.log(bracket.b1[b] + ' -- ' + bracket.b2[b]); 
+
+		    					console.log(innerP1);
+		    					console.log(innerP2);
+
+		    					//console.log('Greska: ' + result.slice(innerP1 + 1, innerP1 + 2));
+		    					var test = result.slice(innerP1 + 1, innerP1 + 2);
+
+		    					//console.log('regex: ' + test.indexOf('['));
+		    					//console.log('regex: ' + test.search(/[^()\[\]{}]/g));
+
+		    					if( myRegex !== -1 ) {
+		    						console.log(1111);
+		    						//p1 = p1 - 1;
+		    						return { success:  false, failed: parm.slice(p1, p1 + 1), position: p1 }
+		    						
+		    					} else {
+		    						console.log(2222);
+		    						return { success:  true };
+		    					}
+
+
+		    					//console.log( result + ' == ' + brackets);
+		    					//console.log(result == brackets);
+
+		    				}
+		    			}
+		    		}
+			    }
+			}
+		</script>
+	</head>
+
+	<body>
+		
+		<script type="text/javascript">
+			//console.log(match('<([>)]{}'));
+			//console.log(match('')); // { success: true } radi
+			//console.log(match('()')); // { success: true } radi
+			//console.log(match('--()-[]--')); // { success: true } radi 
+			//console.log(match('//{(})(\)')); // { success: false, failed: '{', position: 2 } radi
+			//console.log(match('[')); // { success: false, failed: '[', position: 0 } radi
+			//console.log(match('{[()]}')); // { success: true } radi
+			//console.log(match('<(>)')); // { success: true } radi
+			console.log(match('<([>)]{}')); // { success: false, failed: '(', position: 1 } ne radi
+			//console.log(match('[🚀]')); // { success: true } radi
+			//console.log(match('This is some (short) text with [].')); // { success: true } radi
+		</script>
+	</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+	<head>
+		<title>Match</title>
+		<meta charset="UTF-8" />
+
+		<script type="text/javascript">
+
+			function match(parm) {
+				var 
+					i, b, p1, p2, result, myRegex,
+					bracket = {
+					 	b1 : ["(", "[", "{"], 
+						b2 : [")", "]", "}"]
+					};
+
+			    for (i = 0; i < parm.length; i++) {
+		    		for (b = 0; b < bracket.b1.length; b++) {
+		    			if(parm[i] == bracket.b1[b]) {
+				    		p1 = parm.indexOf(bracket.b1[b]);
+				    		p2 = parm.indexOf(bracket.b2[b]);
+
+		    				result = parm.slice(p1, p2 + 1);
+		    				console.log(result);
+
+		    				if(result.length < 3){
+		    					return { success:  true };
+		    				} else {
+		    					result = parm.slice(p1 + 1, p2);
+		    					myRegex = result.search(/[{()}]/);
+		    					console.log(result);
+		    					console.log(myRegex);
+
+		    					if( myRegex !== -1 ) {
+		    						return { success:  false, failed: parm.slice(p1, p1 + 1), position: p1 }
+		    					} else {
+		    						return { success:  true };
+		    					}
+		    				}
+		    			}
+		    		}
+			    }
+			}
+		</script>
+	</head>
+
+	<body>
+		
+		<script type="text/javascript">
+			//console.log(match('<([>)]{}'));
+			//console.log(match('')); // { success: true } radi
+			//console.log(match('()')); // { success: true } radi
+			//console.log(match('--()-[]--')); // { success: true } radi 
+			//console.log(match('//{(})(\)')); // { success: false, failed: '{', position: 2 } radi
+			//console.log(match('[')); // { success: false, failed: '[', position: 0 } radi
+			//console.log(match('{[()]}')); // { success: true } radi
+			//console.log(match('<(>)')); // { success: true } radi
+			console.log(match('<([>)]{}')); // { success: false, failed: '(', position: 1 } ne radi
+			//console.log(match('[🚀]')); // { success: true } radi
+			//console.log(match('This is some (short) text with [].')); // { success: true } radi
+		</script>
+	</body>
+</html>

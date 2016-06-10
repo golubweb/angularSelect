@@ -1,0 +1,116 @@
+body {font-family:Arial, Helvetica, sans-serif;}
+/*=========// Box Model */
+* {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.container {
+  width: 250px;
+  position: relative;
+  margin: 20px auto;
+}
+
+form {position: relative;}
+
+form input {
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 10px 25px 10px 10px;
+  border: 1px solid #999;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; 
+}
+
+form label {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 10px;
+  right: 14px;
+}
+
+form label:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent transparent #999;                  
+  border-width: 5.5px 0 5.5px 9.5px;
+}
+
+form.ng-valid-parse label:before {
+  border-width: 8.7px 5px 0 5px;
+  border-color: #999 transparent transparent transparent;
+}
+
+.searchResult {
+  width: 100%;
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid #999;
+  padding: 0 10px;
+  background: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; 
+
+}
+
+.searchResult p {
+  margin: 0;
+  padding: 10px 0;
+  font-family: 'Open Sans', 
+  sans-serif; font-size: 13px;
+  border-bottom: 1px solid #999;
+}
+.searchResult p span:first-child {display: block; padding-bottom: 4px;}
+
+.searchResult p:last-child {border: none;}
+
+.addToList {
+  width: 100%;
+  min-height: 36px;
+  display: none;
+  position: relative;
+  margin: 2px 0 0;
+  padding: 10px 25px 10px 10px;
+  font-size: 13px;
+  color: #518a12;
+  cursor: pointer;
+  border: 1px solid #518a12;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; 
+}
+
+.addToList:hover {opacity: 0.6;}
+
+.addToList:before {
+  content: "+";
+  width: 16px;
+  height: 16px;
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: #518a12;
+  line-height: 14px;
+  text-align: center;
+}
+
+.filterText {
+  font-size: 13px;
+  color: ##444;
+}
+
+.filterText span{display: block; padding-bottom: 5px;}
+

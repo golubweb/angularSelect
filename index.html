@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+	<head>
+		<title>Test</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/style.css"  rel="stylesheet" type="text/css" />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,800italic,700italic,700,600italic,600,400italic,300italic,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript">var myApp = angular.module('myApp', []);</script>
+		<script type="text/javascript" src="js/mainServices.js"></script>
+		<script type="text/javascript" src="js/mainFactory.js"></script>
+		<script type="text/javascript" src="js/mainCtrl.js"></script>
+		<script type="text/javascript" src="js/mainDirectives.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<form data-ng-controller="mainCtrl">
+				<label></label>
+				<input type="text" placeholder="Type hire to filter" />
+				<div class="frmInfo">
+					<p class="addToList" ng-click="newItem(newText)">{{ newText }}</p>
+					<p class="filterText"> </p>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

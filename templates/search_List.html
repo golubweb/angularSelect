@@ -1,0 +1,6 @@
+<div ng-show="result" class="searchResult">
+	<p ng-repeat="item in items track by $index">
+		<span><strong>Name:</strong> {{ item.name }}</span>
+		<span><strong>Lat:</strong> {{ item.lat }} <strong>Lng:</strong> {{ item.lng }}</span>
+	</p>
+</div>
